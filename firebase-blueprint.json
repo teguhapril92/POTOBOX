@@ -1,0 +1,74 @@
+{
+  "entities": {
+    "PhotoRecord": {
+      "title": "PhotoRecord",
+      "description": "Captured photobooth composite image and metadata",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the photo"
+        },
+        "dataUrl": {
+          "type": "string",
+          "description": "High resolution composite data URL"
+        },
+        "collageType": {
+          "type": "string",
+          "description": "Collage format type",
+          "enum": ["strip", "grid"]
+        },
+        "templateName": {
+          "type": "string",
+          "description": "Name of the frame template applied"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the photo was taken"
+        }
+      },
+      "required": ["id", "dataUrl", "collageType", "templateName", "createdAt"]
+    },
+    "TemplateRecord": {
+      "title": "TemplateRecord",
+      "description": "Custom frame template uploaded by user",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Template identifier"
+        },
+        "title": {
+          "type": "string",
+          "description": "Display name of the template"
+        },
+        "dataUrl": {
+          "type": "string",
+          "description": "PNG image data URL"
+        },
+        "collageType": {
+          "type": "string",
+          "description": "Matching collage format",
+          "enum": ["strip", "grid"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Upload timestamp"
+        }
+      },
+      "required": ["id", "title", "dataUrl", "collageType", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/photos/{photoId}": {
+      "schema": "PhotoRecord",
+      "description": "Collection of captured photobooth photos accessible via QR code"
+    },
+    "/templates/{templateId}": {
+      "schema": "TemplateRecord",
+      "description": "Collection of custom saved templates such as PLESIR.png"
+    }
+  }
+}

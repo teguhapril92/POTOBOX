@@ -1,0 +1,10 @@
+{
+  "name": "Photobooth Layar PID",
+  "description": "Aplikasi Photobooth Kiosk layar Public Information Display (PID) dengan kolase, frame PNG transparan, timer otomatis, dan unduh via QR Code.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
